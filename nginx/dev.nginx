@@ -1,0 +1,26 @@
+{
+    "listeners": {
+        "*:80": {
+            "pass": "routes"
+        }
+    },
+
+    "routes": [
+        {
+            "action": {
+                "share": "domino/api/public$uri",
+                "fallback": {
+                    "pass": "applications/rails"
+                }
+            }
+        }
+    ],
+
+    "applications": {
+        "rails": {
+            "type": "ruby",
+            "script": "config.ru",
+            "working_directory": "/domino/api/app/"
+        }
+    }
+}
